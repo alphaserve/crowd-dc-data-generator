@@ -1,0 +1,12 @@
+<html>
+<head>
+    <meta name="section" content="administration"/>
+    <meta name="decorator" content="atl.admin"/>
+</head>
+<body>
+    <div class="current-stats">
+        Users Count: $usersCount
+        Groups Count: $groupsCount
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta name="section" content="administration"/>
+    <meta name="decorator" content="atl.admin"/>
+    $webResourceManager.requireResourcesForContext("generate-data-admin-page")
+</head>
+    <body>
+        #if($generationInProgress)
+            <div class="aui-message aui-message-error">
+                <p class="title">
+                    <strong>Generation in progress</strong>
+                </p>
+                <p>Previous generation has not finsihed yet. Please wait.</p>
+            </div>
+        #end
+        <form class="aui" method="post">
+            <div>
+                <div class="field-group">
+                    <label for="users-to-generate">
+                        Users
+                    </label>
+                    <input class="text medium-field" type="text"
+                           id="users-to-generate" name="users-gen-num"
+                           placeholder="0">
+                    <div class="description">Number of users to generate</div>
+                </div>
+                <div class="field-group">
+                    <label for="groups-to-generate">
+                        Groups
+                    </label>
+                    <input class="text medium-field" type="text"
+                           id="groups-to-generate" name="groups-gen-num"
+                           placeholder="0">
+                    <div class="description">Number of groups to generate</div>
+                </div>
+                <div class="buttons-container">
+                    <div class="buttons">
+                        <input class="button submit" type="submit" value="Generate" id="comment-save-button">
+                        <a class="cancel" href="#">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+    </body>
+</html>

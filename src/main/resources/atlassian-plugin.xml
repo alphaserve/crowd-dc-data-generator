@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+    <param name="plugin-icon">images/pluginIcon.png</param>
+    <param name="plugin-logo">images/pluginLogo.png</param>
+  </plugin-info>
+  <!-- add our i18n resource -->
+  <resource type="i18n" name="i18n" location="crowd-data-generator"/>
+  <!-- add our web resources -->
+  <web-resource key="crowd-data-generator-resources" name="crowd-data-generator Web Resources">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+    <resource type="download" name="crowd-data-generator.css" location="/css/crowd-data-generator.css"/>
+    <resource type="download" name="crowd-data-generator.js" location="/js/crowd-data-generator.js"/>
+    <resource type="download" name="images/" location="/images"/>
+    <context>crowd-data-generator</context>
+  </web-resource>
+
+  <web-resource key="generate-data-admin-page-resorce">
+    <dependency>com.atlassian.auiplugin:ajs</dependency>
+
+    <resource type="download" name="data-generator-admin.js" location="/js/data-generator-admin.js"/>
+
+    <context>generate-data-admin-page</context>
+  </web-resource>
+
+  <servlet name="Data Generate Servlet" i18n-name-key="data-generate-servlet.name" key="data-generate-servlet"
+           class="com.alphaserve.crowd.datagenerator.controller.servlets.DataGenerateServlet">
+    <description key="data-generate-servlet.description">The Data Generate Servlet Plugin</description>
+    <url-pattern>/datagenerator/adminpage</url-pattern>
+  </servlet>
+
+  <web-item name="Generate Data Item"
+            key="as-generate-data-admin-page"
+            section="administrationnav" weight="1000">
+    <description key="as-data-generatoritem.description">Data generator item</description>
+    <label key="alpha-serve.data-generator.admin-section.generate-data-item.label"/>
+    <link linkId="as-data-generate-linkid">/plugins/servlet/datagenerator/adminpage</link>
+  </web-item>
+
+  <servlet name="Stats Servlet" i18n-name-key="stats-servlet.name" key="stats-servlet"
+           class="com.alphaserve.crowd.datagenerator.controller.servlets.StatsServlet">
+    <description key="stats-servlet.description">Servlet showing page with instance stats</description>
+    <url-pattern>/datagenerator/statspage</url-pattern>
+  </servlet>
+
+  <web-item name="Instance stats data item"
+            key="as-stats-data-admin-page"
+            section="administrationnav" weight="1100">
+    <description key="as-stats-data.description">Stats item</description>
+    <label key="alpha-serve.stats-data.admin-section.stats-data-item.label"/>
+    <link linkId="as-stats-data-linkid">/plugins/servlet/datagenerator/statspage</link>
+  </web-item>
+
+</atlassian-plugin>
